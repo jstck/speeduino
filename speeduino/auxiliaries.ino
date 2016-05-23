@@ -187,3 +187,27 @@ void boostControl() { }
 void vvtControl() { }
 
 #endif
+
+void initialiseVics()
+{
+  if(configPage4.vicsInv == 1) {
+     vicsHIGH = LOW;
+     vicsLOW = HIGH;
+  }
+  else {
+    fanHIGH = HIGH;
+    fanLOW = LOW;
+  }
+  digitalWrite(pinVics, vicsLOW);         //Initiallise with VICS off
+}
+
+void vicsControl()
+{
+  if (currentStatus.RPM>= configPage4.vicsRpm) {
+    digitalWrite(pinVics,vicsHIGH);
+   }
+   else if (currentStatus.RPM <= (configPage4.vicsRpm - configPage4.vicsHyster))
+   {
+     digitalWrite(pinVics, vicsLOW);
+   }
+}

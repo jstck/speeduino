@@ -90,6 +90,9 @@ static byte coilLOW = LOW;
 static byte fanHIGH = HIGH;             // Used to invert the cooling fan output
 static byte fanLOW = LOW;               // Used to invert the cooling fan output
 
+static byte vicsHIGH = HIGH;            // Used to invert the VICS output
+static byte vicsLOW = LOW;              // Used to invert the VICS output
+
 volatile int mainLoopCount;
 byte deltaToothCount = 0; //The last tooth that was used with the deltaV calc
 int rpmDelta;

@@ -622,13 +622,18 @@ struct config11 {
   byte unused11_125;
   byte unused11_126;
   byte unused11_127;
-  byte unused11_128_192[64];
+  byte vicsEnable : 1;    //Enable VICS control
+  byte vicsInv : 1;       //Invert VICS output (normally low for low rpm, high for high rpm)
+  byte vicsRpm;           //RPM at which to enable VICS
+  byte vicsHyster;        //Vics de-hysteresis (turn on at vicsRpm, off at vicsRpm - vicsHyster)
+  byte unused11_132_192[60];
+
 #if defined(CORE_AVR)
   };
 #else
   } __attribute__((__packed__)); //The 32 bit systems require all structs to be fully packed
 #endif
-
+};
 
 byte pinInjector1; //Output pin injector 1
 byte pinInjector2; //Output pin injector 2
@@ -688,6 +693,7 @@ byte pinLaunch;
 byte pinIgnBypass; //The pin used for an ignition bypass (Optional)
 byte pinFlex; //Pin with the flex sensor attached
 byte pinBaro; //Pin that an external barometric pressure sensor is attached to (If used)
+byte pinVics; //Pin used to control VICS
 
 // global variables // from speeduino.ino
 extern struct statuses currentStatus; // from speeduino.ino

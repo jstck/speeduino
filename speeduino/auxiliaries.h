@@ -60,5 +60,10 @@ unsigned int vvt_pwm_max_count; //Used for variable PWM frequency
 volatile unsigned int vvt_pwm_cur_value;
 long vvt_pwm_target_value;
 
+volatile bool vics_state;
 
 #endif
+
+#define vicsRpm 5000
+#define vicsHyster 200
+#define vicsInv 0

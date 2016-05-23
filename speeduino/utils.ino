@@ -416,6 +416,37 @@ void setPinMapping(byte boardID)
       pinFan = 47; //Pin for the fan output
       break;
 
+     case 40:
+      //Pin mappings as per the v0.3 shield, with slightly different output assignments
+      // S1 used for cooling fan, S2 for VICS
+      pinInjector1 = 8; //Output pin injector 1 is on
+      pinInjector2 = 9; //Output pin injector 2 is on
+      pinInjector3 = 10; //Output pin injector 3 is on
+      pinInjector4 = 11; //Output pin injector 4 is on
+      pinCoil1 = 28; //Pin for coil 1
+      pinCoil2 = 24; //Pin for coil 2
+      pinCoil3 = 40; //Pin for coil 3
+      pinCoil4 = 36; //Pin for coil 4
+      pinTrigger = 19; //The CAS pin
+      pinTrigger2 = 18; //The Cam Sensor pin
+      pinTPS = A2;//TPS input pin
+      pinMAP = A3; //MAP sensor pin
+      pinIAT = A0; //IAT sensor pin
+      pinCLT = A1; //CLS sensor pin
+      pinO2 = A8; //O2 Sensor pin
+      pinBat = A4; //Battery reference voltage pin
+      pinDisplayReset = 48; // OLED reset pin
+      pinTachOut = 49; //Tacho output pin
+      pinIdle1 = 5; //Single wire idle control
+      pinIdle2 = 47; //2 wire idle control
+      pinFuelPump = 4; //Fuel pump output
+      pinStepperDir = 16; //Direction pin  for DRV8825 driver
+      pinStepperStep = 17; //Step pin for DRV8825 driver
+      pinFan = 6; //Pin for the fan output (S1)
+      pinLaunch = 12; //Can be overwritten below
+      pinVics = 7; //Pin to control VICS (S2)
+      break;
+
     default:
       //Pin mappings as per the v0.2 shield
       pinInjector1 = 8; //Output pin injector 1 is on
