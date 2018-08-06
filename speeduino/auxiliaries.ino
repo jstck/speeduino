@@ -33,14 +33,14 @@ void fanControl()
     int onTemp = (int)configPage6.fanSP - CALIBRATION_TEMPERATURE_OFFSET;
     int offTemp = onTemp - configPage6.fanHyster;
 
-    if ( currentStatus.coolant >= onTemp )
+    if ( currentStatus.coolant >= onTemp && BIT_CHECK(currentStatus.engine, BIT_ENGINE_RUN))
     {
       //Fan needs to be turned on. Checked for normal or inverted fan signal
       if( configPage6.fanInv == 0 ) { FAN_PIN_HIGH(); }
       else { FAN_PIN_LOW(); }
       currentStatus.fanOn = true;
     }
-    else if ( currentStatus.coolant <= offTemp )
+    else if ( currentStatus.coolant <= offTemp || !BIT_CHECK(currentStatus.engine, BIT_ENGINE_RUN))
     {
       //Fan needs to be turned off. Checked for normal or inverted fan signal
       if( configPage6.fanInv == 0 ) { FAN_PIN_LOW(); } 
