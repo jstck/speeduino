@@ -658,7 +658,6 @@ struct config6 {
   byte fanHyster;         // Fan hysteresis
   byte fanFreq;           // Fan PWM frequency
   byte fanPWMBins[4];     //Temperature Bins for the PWM fan control
-  byte fanRunEngine : 1;  // Only run fan when engine is running (disable when stopped/cranking)
 #if defined(CORE_AVR)
   };
 #else
@@ -819,8 +818,7 @@ struct config10 {
   byte knock_recoveryStepTime;
   byte knock_recoveryStep;
 
-  byte fanRunEngine : 1;
-  byte unused11_sparebits : 7;
+  byte fanRunEngine : 1;  // Only run fan when engine is running (disable when stopped/cranking)
 
   byte unused11_122_192[68];
 
